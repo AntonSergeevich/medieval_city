@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <div class="container" >
+        <h2 class="text-center">Добавляем Боярина или Дворянина</h2>
+        <div class="row justify-content-center text-center">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form }}
+                <div>
+                    <button type="submit" class="btn btn-success w-auto mt-3">Добавить</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+{% endblock %}

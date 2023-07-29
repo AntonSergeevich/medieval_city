@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Великий град{% endblock title %}
+{% block content %}
+<div class="main-wrapper pb-5">
+<div class="container text-center ">
+    <h1 class="card-title pt-5">Князь всея Руси</h1>
+    <div class="row justify-content-center">
+        <div class="shadow-lg card" style="width: 35rem;">
+            <img src="{% static 'img/knyaz.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Князь</h5>
+                <p class="card-text">Алексей Иванов</p>
+                <p class="card-text">65 лет</p>
+                <p class="card-text">Доход 500 золотых</p>
+                <a href="{% url 'add' %}"> <button type="button" class="btn btn-outline-success rounded-pill">Добавить Дворянина или Боярина </button> </a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container text-center">
+    <h1 class="card-title pt-5">Дворяне и Бояре</h1>
+    <div class="row justify-content-center">
+        {% for person in view.persons %}
+        <div class="col-sm-4">
+            <div class=" shadow card">
+                {% if  person.img %}
+                        <img src="{{ person.img.url }}" class="card-img-top" alt="...">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ person.categoryType }}</h5>
+                    <p class="card-text">{{ person.name }}</p>
+                    <p class="card-text">{{ person.year }} лет</p>
+                    <p class="card-text">Доход {{ person.cash }} золотых</p>
+                    <div class="gap-2 col-8 mx-auto">
+                    <a href="{% url 'update' person.id %}"> <button type="button" class="btn btn-outline-warning rounded-pill">Редактировать </button> </a>
+                    <a href="{% url 'delete' person.id %}"> <button type="button" class="btn btn-outline-danger rounded-pill">Удалить </button> </a>
+                    <a href="{% url 'add_servant' %}"> <button type="button" class="btn btn-outline-success rounded-pill">Добавить холопа </button> </a>
+                        </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <div class="container text-center">
+                    <h1 class="card-title pt-5">Холопы</h1>
+        <div class="row justify-content-center">
+                {% for servant in view.servants %}
+            <div class="col-sm-4">
+                <div class="shadow-sm  card">
+                    <h4> Относится к {{ servant.author }}  </h4>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ servant.name }}</h5>
+                        <p class="card-text">{{ servant.year }} лет</p>
+                        <p class="card-text">Доход {{ servant.cash }} золотых</p>
+                        <div class="gap-2 col-8 mx-auto">
+                        <a href="{% url 'update_servant' servant.id %}"> <button type="button" class="btn btn-outline-warning rounded-pill">Редактировать </button> </a>
+                        <a href="{% url 'delete_servant' servant.id %}"> <button type="button" class="btn btn-outline-danger rounded-pill">Удалить</button> </a>
+                        </div>
+                        </div>
+                </div>
+            </div>
+
+            {% endfor %}
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

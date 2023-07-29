@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+        <div class="container" >
+            <div class="row py-3">
+                <h2>Вы действительно хотите удалить {{ servant.name }}?</h2>
+                <form method="POST">
+                    {% csrf_token %}
+                    <button  type="submit"  class="btn btn-danger">Подтвердить</button>
+                </form>
+            </div>
+        </div>
+
+{% endblock %}

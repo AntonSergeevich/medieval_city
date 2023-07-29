@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Резюме{% endblock title %}
+
+{% block content %}
+<div class="main-wrapper">
+    <div class="container px-3 px-lg-5">
+        <article class="resume-wrapper mx-auto theme-bg-light p-5 mb-5 my-5 shadow-lg">
+
+            <div class="resume-header">
+                <div class="row align-items-center">
+                    <div class="resume-title col-12 col-md-6 col-lg-8 col-xl-9">
+                        <h2 class="resume-name mb-0 text-uppercase">{{view.resume.name}}</h2>
+                        <div class="resume-tagline mb-3 mb-md-0">Junior web developer</div>
+                    </div><!--//resume-title-->
+                    <div class="resume-contact col-12 col-md-6 col-lg-4 col-xl-3">
+                        <ul class="list-unstyled mb-0">
+                            <li class="mb-2"><i class="fas fa-phone-square fa-fw fa-lg mr-2 "></i><a class="resume-link"
+                                                                                                     href="tel:#">+7(995)441-2021</a>
+                            </li>
+                            <li class="mb-2"><i class="fas fa-envelope-square fa-fw fa-lg mr-2"></i><a
+                                    class="resume-link" href="mailto:#">glukhovas@yandex.ru</a></li>
+                            <li class="mb-2"><i class="fas fa-globe fa-fw fa-lg mr-2"></i><a class="resume-link"
+                                                                                             href="https://t.me/Anton_Glukhov">https://t.me/Anton_Glukhov</a>
+                            </li>
+                            <li class="mb-0"><i class="fas fa-map-marker-alt fa-fw fa-lg mr-2"></i>Красноярск</li>
+                        </ul>
+                    </div><!--//resume-contact-->
+                </div><!--//row-->
+
+            </div><!--//resume-header-->
+            <hr>
+            <div class="resume-intro py-3">
+                <div class="media flex-column flex-md-row ">
+                    <img class="resume-profile-image mb-3 mb-md-0 mr-md-5 ml-md-0 rounded mx-auto"
+                         src="{{ view.resume.img.url }}" alt="image">
+                    <div class="media-body text-left">
+                        <p class="mb-0">
+                            {{  view.resume.about_me|safe }}
+                        </p>
+                    </div><!--//media-body-->
+                </div>
+            </div><!--//resume-intro-->
+            <hr>
+            <div class="resume-body">
+                <div class="row">
+                    <div class="resume-main col-12 col-lg-8 col-xl-9 pr-0 pr-lg-5">
+                        <section class="work-section py-3">
+                            <h3 class="text-uppercase resume-section-heading mb-4">Опыт работы</h3>
+                            <div class="item mb-3">
+                                {{view.resume.work_experiens|safe}}
+                            </div><!--//item-->
+                        </section>
+
+
+                        <section class="project-section py-3">
+                            <h3 class="text-uppercase resume-section-heading mb-4">Проекты</h3>
+                            <div class="item mb-3">
+                            {{ view.resume.projects|safe }}
+                            </div>
+                        </section><!--//project-section-->
+                    </div><!--//resume-main-->
+                    <aside class="resume-aside col-12 col-lg-4 col-xl-3 px-lg-4 pb-lg-4">
+                        <section class="education-section py-3">
+                            <h3 class="text-uppercase resume-section-heading mb-4">Образование</h3>
+                            <ul class="list-unstyled resume-education-list">
+                                <li class="mb-3">
+                                    <div class="resume-degree font-weight-bold">Информатик</div>
+                                    <div class="resume-degree-org text-muted">Красноярский государственный педагогический университет им. В.П. Астафьева, Красноярск</div>
+                                    <div class="resume-degree-time text-muted">2017</div>
+                                </li>
+                                <li>
+                                    <div class="resume-degree font-weight-bold">Менеджер</div>
+                                    <div class="resume-degree-org text-muted">Региональный финансово-экономический институт, Курск</div>
+                                    <div class="resume-degree-time text-muted">2015</div>
+                                </li>
+                            </ul>
+                        </section><!--//education-section-->
+
+                        <section class="skills-section py-3">
+                            <h3 class="text-uppercase resume-section-heading mb-4">Язык</h3>
+                            <ul class="list-unstyled resume-lang-list">
+                                <li class="mb-2">Русский <span class="text-muted">(Native)</span></li>
+                                <li>Английский <span class="text-muted">(Elementary)</span></li>
+                            </ul>
+                        </section><!--//certificates-section-->
+                        <section class="skills-section py-3">
+                            <h3 class="text-uppercase resume-section-heading mb-4">Интересы</h3>
+                            <ul class="list-unstyled resume-interests-list mb-0">
+                                <li class="mb-2">Программирование</li>
+                                <li class="mb-2">Гитара</li>
+                                <li class="mb-2">YouTube</li>
+                                <li>Компьютерные игры</li>
+                            </ul>
+                        </section><!--//certificates-section-->
+
+                    </aside><!--//resume-aside-->
+                </div><!--//row-->
+            </div><!--//resume-body-->
+            <hr>
+        </article>
+
+    </div><!--//container-->
+
+
+</div><!--//main-wrapper-->
+{% endblock %}
